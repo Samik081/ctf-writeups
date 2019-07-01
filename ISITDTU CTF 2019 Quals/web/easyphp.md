@@ -50,7 +50,7 @@ At a first glance, functions `chr` and `intval` look promising - we could possib
 both characters and numbers. However, to do so, we need numbers to craft strings from (as we cant use any string quotes)
 e.g: `chr(asciicode)`.
 
-###Looking for a right path
+### Looking for a right path
 How can we generate numbers then? There comes PHP syntax and behaviour with help!
 Basically in PHP strings have to be quoted using `"` or `'`.
 Although those characters are restricted by regex condition, PHP acts in pretty weird way, if we don't quote string -
@@ -58,14 +58,16 @@ it assumes we've simply forgotten to quote it, produces notice and creates strin
 (only a-ZA-Z characters are valid in this case). Also, notice can be easily suppressed using `@` which is permitted by regex.
 
 How can we get number from string, though? In this case we can simply use PHP's ~~amazing~~ type juggling:
-```
+```php
+<?php
 $a = !!@i;
 echo $a; // produces boolean(true)
 ```
 String `i` is casted to **false** via `!` operator, then negated by another `!` and we have logical **true**.
 Booleans are casted to integer, when any arithmetic is used on them, so we can produce any number we want!
 For example:
-```
+```php
+<?php
 echo (!!@i + !!@i) ** (!!@i + !!@i + !!@i + !!@i); //outputs 2^4 = 16
 ```
 
@@ -104,7 +106,8 @@ result in ANY functions names!
 
 Next step is to create string representation for crafted number. 
 Again, PHP type juggling arrives on a white horse yelling for attention:
-```
+```php
+<?php
 var_dump(trim(123)); //produces string(3) "123"
 ```
 `trim(string $str)` function takes string for argument, and if integer provided, simply casts it to string and returns
@@ -168,7 +171,8 @@ getcwd()             // returns current dir path
 var_dump($var)       // outputs $var content of any type (may be array from scandir)
 ```
 So following string is needed:
-```
+```php
+<?php
 var_dump(scandir(getcwd()));
 ```
 
