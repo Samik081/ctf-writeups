@@ -1,10 +1,10 @@
-##EasyPHP (871 points)
+## EasyPHP (871 points)
 
-###Description
+### Description
 Don't try to run any Linux command, just use all the PHP functions you know to get the flag
 http://165.22.57.95:8000/
 
-###First look
+### First look
 Visiting given URL gives us a look at the source file:
 ```php
 <?php
@@ -110,7 +110,7 @@ var_dump(trim(123)); //produces string(3) "123"
 `trim(string $str)` function takes string for argument, and if integer provided, simply casts it to string and returns
 it trimmed - this is our way to convert crafted numbers to strings.
 
-###Exploitation
+### Exploitation
 Off we go, ready and steady to begin exploitation. I've written script which simply iterates through available characters
 and helps me to find possible `Letter ^ [0-9]` pairs for each character in provided function name and further generates 
 payload which is encoded function name string. Having this I generated `phpinfo();` string:
@@ -157,7 +157,7 @@ http://165.22.57.95:8000/?_=(AYAYYRY^trim(((((!!i%2B!!i))**((!!i%2B!!i%2B!!i%2B!
 Also, it's worth to mention, that the only char we have to urlencode is `+` sign - if we urlencode all the characters,
 we might get `414 request-uri too large` for larger payloads.
 
-###Looking for flag
+### Looking for flag
 To be honest, I was sure I'm gonna already get the flag at this point. Obviously I was wrong, so I continued research.
 The very first idea was to print content of current directory (which is often place where flag is stored).
 
