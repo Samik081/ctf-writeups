@@ -172,7 +172,6 @@ var_dump($var)       // outputs $var content of any type (may be array from scan
 ```
 So following string is needed:
 ```php
-<?php
 var_dump(scandir(getcwd()));
 ```
 
