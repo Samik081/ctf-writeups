@@ -40,6 +40,7 @@ else:
 ## Solution
 ### Approach
 We are given dictionary of 56 strings and a secret key. Secret key gets converted to it's number representation 
+
 The strings are being XORed based on the user input (password):
 1. password (each character) is converted to its binary representation
 2. the padding of binary representation of each character is set to 7 (so, for example, 'a' is `0x1100001`, not `0x01100001`) **(IMPORTANT)**
@@ -49,6 +50,7 @@ The strings are being XORed based on the user input (password):
 6. if int representation of secret key `int_key == xor`, we get the flag
 
 This means, that we choose which dictionary strings are going to be XORed by changing the **input password**.
+
 Our job is now to :
 1. find the correct strings, that XORed together will give the key
 2. get the "binary password" - created from the correct dictionary string indexes (`1` if the string should be XORed) 
@@ -67,7 +69,7 @@ To find the correct strings to be XORed, we should notice few things:
 - longest string is 11 characters long, which gives us 88 bits (with leading zeros to pad to the whole byte) when presented as binary
 - when XORing strings, we actually XOR character by character - byte by byte - bit by bit
 - this means, that the very beginning of the XOR result can be "manipulated" only with the longest strings and,
-- that each character in the secret key `s3cr3t_k3y` can be affected by the dictionary string only if the string is long enough to cover this character position
+- that each character in the secret key string representation of XOR result, can be affected by the dictionary string only if the string is long enough to cover this character position
 
 Having this knowledge, we can craft our password starting with the longest strings in such fashion:
 1. Group dictionary strings by their length and assign the groups to the bytes (`[byte_0 => ['X', 'Y', 'Z'], byte_1 => ['A', 'B', 'C']]`)
